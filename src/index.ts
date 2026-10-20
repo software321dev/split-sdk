@@ -2008,3 +2008,34 @@ export type {
   NonceEventListener,
 } from "./nonceManager.js";
 
+// Response compression with gzip/brotli and compression metrics (#1132)
+export {
+  CompressionManager,
+  compressPayload,
+  decompressPayload,
+  transparentDecompress,
+  createCompressionRequestInterceptor,
+  createCompressionResponseInterceptor,
+  createCompressionMiddleware,
+  detectCompressionSupport,
+  buildAcceptEncodingHeader,
+  isCompressedPayload,
+  isCompressionSupported,
+  normalizeCompressionAlgorithm,
+  clampCompressionLevel,
+  COMPRESSION_LEVEL_LIMITS,
+  SUPPORTED_COMPRESSION_ALGORITHMS,
+  MIN_COMPRESSION_BYTES,
+} from "./compression.js";
+export type {
+  CompressionAlgorithm,
+  CompressionAlgorithmName,
+  CompressionConfig,
+  CompressionMiddleware,
+  CompressionMetrics,
+  CompressionMetricsSummary,
+  CompressionPayload,
+  CompressionResponse,
+  CompressedPayload,
+} from "./compression.js";
+
