@@ -2008,3 +2008,27 @@ export type {
   NonceEventListener,
 } from "./nonceManager.js";
 
+
+// Query result caching with per-type TTLs and hit/miss metrics (#1135)
+export {
+  QueryResultCache,
+  buildQueryKey,
+  getCachedInvoiceList,
+  getCachedInvoiceQuery,
+  getCachedInvoiceStats,
+  getCachedComputedStats,
+  createInvalidationHook,
+  QUERY_TYPES,
+  DEFAULT_QUERY_TTL_MS,
+  DEFAULT_MAX_ENTRIES,
+} from "./queryCache.js";
+export type {
+  KnownQueryType,
+  QueryCacheConfig,
+  QueryCacheListener,
+  QueryCacheStats,
+  QueryCacheWarmEntry,
+  QueryDataChangeListener,
+  QueryTypeStats,
+  QueryWarmUpResult,
+} from "./queryCache.js";
