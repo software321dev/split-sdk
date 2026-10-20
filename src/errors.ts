@@ -2871,3 +2871,35 @@ export function isDelegateLimitReachedError(err: unknown): err is DelegateLimitR
   return err instanceof DelegateLimitReachedError;
 }
 
+/**
+ * Thrown when a lazily loaded invoice property fails to resolve.
+ *
+ * Lazy properties are fetched on demand; when the fetch fails the failure is
+ * surfaced as this typed error instead of an opaque rejection, so callers can
+ * handle it with an `instanceof` check.
+ */
+export class LazyPropertyLoadError extends StellarSplitError {
+  /** The property that failed to load. */
+  readonly property: string;
+  /** The message of the original failure. */
+  readonly cause: string;
+
+  constructor(property: string, cause?: unknown) {
+    const detail = cause instanceof Error ? cause.message : String(cause ?? "unknown error");
+    super(
+      `Failed to lazily load invoice property '${property}': ${detail}`,
+      "LAZY_PROPERTY_LOAD_FAILED",
+      { property, cause: detail },
+      detail,
+    );
+    this.name = "LazyPropertyLoadError";
+    this.property = property;
+    this.cause = detail;
+    Object.setPrototypeOf(this, new.target.prototype);
+  }
+}
+
+export function isLazyPropertyLoadError(err: unknown): err is LazyPropertyLoadError {
+  return err instanceof LazyPropertyLoadError;
+}
+

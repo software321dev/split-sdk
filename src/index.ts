@@ -2008,3 +2008,30 @@ export type {
   NonceEventListener,
 } from "./nonceManager.js";
 
+
+// Lazy invoice loading — deferred resolution of heavy invoice properties (#1134)
+export {
+  LazyValue,
+  createLazyInvoice,
+  createLazyInvoices,
+  createInvoicePropertyLoader,
+  createLocalPropertyLoader,
+  describeLazyInvoice,
+  resolveLazyInvoice,
+  toLazyPropertyError,
+  EAGER_INVOICE_PROPERTIES,
+  LAZY_INVOICE_PROPERTIES,
+} from "./invoice/lazyInvoice.js";
+export type {
+  LazyInvoiceControls,
+  LazyInvoiceLayout,
+  LazyInvoiceLoader,
+  LazyInvoiceOptions,
+  LazyInvoiceProperty,
+  LazyInvoicePropertyMap,
+  LazyInvoiceRecord,
+  LazyInvoiceState,
+  LazyInvoiceStateListener,
+  LazyLoadingState,
+} from "./invoice/lazyInvoice.js";
+export { LazyPropertyLoadError, isLazyPropertyLoadError } from "./errors.js";
