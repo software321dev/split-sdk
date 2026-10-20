@@ -2008,3 +2008,34 @@ export type {
   NonceEventListener,
 } from "./nonceManager.js";
 
+// Batch operation optimization — grouping, parallelism, retry and metrics (#1133)
+export {
+  BatchOptimizer,
+  StorageKeyAccessOptimizer,
+  groupPaymentsByRecipient,
+  paymentItemsFromOperations,
+  paymentItemsToOperations,
+  executeBatch,
+  mapWithConcurrency,
+  estimateBatchFee,
+  recommendBatchSize,
+  MAX_BATCH_SIZE,
+  DEFAULT_BASE_FEE_STROOPS,
+} from "./batchOptimizer.js";
+export type {
+  BatchExecutionOptions,
+  BatchExecutionSummary,
+  BatchGroup,
+  BatchItemResult,
+  BatchOptimizationMetrics,
+  BatchOptimizerOptions,
+  BatchPaymentItem,
+  BatchSizeRecommendation,
+  BatchSizeRecommendationOptions,
+  BatchSubmitter,
+  ConcurrentRunResult,
+  GroupedBatch,
+  StorageKeyOptimizerOptions,
+  StorageKeyStats,
+} from "./batchOptimizer.js";
+
